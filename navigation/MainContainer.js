@@ -22,7 +22,7 @@ export default function MainContainer() {
     return (
         <NavigationContainer>
             <Tab.Navigator
-                initialRouteName="homeName"
+                initialRouteName={homeName}
                 screenOptions={({route}) => ({
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
@@ -41,6 +41,7 @@ export default function MainContainer() {
 
                         return <Ionicons name={iconName} size={size} color={color} />
                     },
+                    headerShown: false // This hides the header for all Screens
                 })}
                 >
 
