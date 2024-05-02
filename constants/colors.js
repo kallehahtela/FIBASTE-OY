@@ -1,10 +1,11 @@
 export const GlobalStyles = {
     color: {
-        Color1: '#B4B8AB',
-        Color2: '#153243',
-        Color3: '#284B63',
-        Color4: '#F4F9E9',
-        Color5: '#EEF0EB',
+        white: '#fff',
+        light_grey: '#cacaca',
+        dark_grey: '#636363',
+        light_blue: '#add8e6',
+        black: '#000',
+        light_pink: '#ffb6c1',
     }
 }
 
