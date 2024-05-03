@@ -6,6 +6,7 @@ export const GlobalStyles = {
         light_blue: '#add8e6',
         black: '#000',
         light_pink: '#ffb6c1',
+        fibasteBlue: '#0d56dd',
     }
 }
 

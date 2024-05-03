@@ -1,11 +1,10 @@
 import { View, Text } from "react-native";
 
-function FavoritesScreen() {
+function ProfileScreen() {
     return (
         <View>
-            
         </View>
     );
 }
 
-export default FavoritesScreen;
+export default ProfileScreen;

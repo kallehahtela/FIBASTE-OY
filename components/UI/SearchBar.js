@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet, Text } from 'react-native';
 
-import { Ionicons } from '@expo/vector-icons';
+import IconButton from './IconButton';
 import { GlobalStyles } from '../../constants/colors';
 
 const SearchBar = ({ style }) => {
@@ -9,55 +9,95 @@ const SearchBar = ({ style }) => {
 
   const handleSearch = (text) => {
     setQuery(text);
-    // You can add functionality here to handle the search query, like filtering data or making an API call
   };
 
   const clearInput = () => {
     setQuery('');
-    // Optional add any additional actions when clearing the input
   };
 
   return (
     <View style={[styles.container, style]}>
-      <TextInput
-        placeholder="Search here..."
-        value={query}
-        onChangeText={handleSearch}
-        style={styles.input}
-        placeholderTextColor={GlobalStyles.color.black}
-      />
-      {query.length > 0 && (
-        <TouchableOpacity onPress={clearInput} style={styles.icon}>
-            <Ionicons name='close-circle' size={24} color={GlobalStyles.color.Color3} />
-        </TouchableOpacity>
-      )}
+      <View style={styles.searchContainer}>
+        <IconButton
+          icon='search-outline'
+          size={24}
+          color={GlobalStyles.color.dark_grey}
+          style={styles.iconInside}
+        />
+        <TextInput
+          placeholder="What to do?"
+          value={query}
+          onChangeText={handleSearch}
+          style={styles.input}
+          placeholderTextColor={GlobalStyles.color.dark_grey}
+        />
+        {query.length > 0 && (
+          <IconButton
+            icon='close-circle'
+            size={24}
+            color={GlobalStyles.color.black}
+            onPress={clearInput}
+            style={styles.iconOutside}
+          />
+        )}
+      </View>
+      <View style={styles.labelContainer}>
+        <Text style={styles.labelText}>Anytime -</Text>
+        <Text style={styles.labelText}>Any day -</Text>
+        <Text style={styles.labelText}>Earn cash</Text>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row', // Keep items in a row
-    width: '100%',
-    minWidth: 200, // Sets minimum width of searchbar
-    height: 40, // Fixed height for the container
-    paddingHorizontal: 10,
+    width: 320,  // Fixed width set to 280 units
     alignItems: 'center',
-    backgroundColor: GlobalStyles.color.white, // Set a background color of container
-    borderColor: GlobalStyles.color.light_pink,
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 10,
+    backgroundColor: GlobalStyles.color.white,
+    borderRadius: 30,
+    borderWidth: 0.2,
+    borderColor: GlobalStyles.color.light_grey,
+    marginBottom: 15,
+    elevation: 4,
+    shadowColor: 'black',
+    shadowOffset: { width: -1, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    paddingVertical: 10,
+    minHeight: 35,  // Fixed minimum height to maintain vertical sizing
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    minHeight: 30,
   },
   input: {
-    flex: 1, // Take all available space
-    minHeight: 38, // Minimum height for the input
-    paddingHorizontal: 10, // Padding inside the input
-    borderWidth: 0, // No additional border
-    color: GlobalStyles.color.black, // Color of the text
+    flex: 1,
+    minHeight: 38,
+    borderWidth: 0,
+    color: GlobalStyles.color.black,
   },
-  icon: {
-    marginRight: 10, // Right margin for the icon
+  iconInside: {
+    marginRight: 10,
+  },
+  iconOutside: {
+    marginRight: 10,
+  },
+  labelContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    width: '100%',
+    marginTop: 0,
+    paddingHorizontal: 20,
+    marginLeft: 55
+  },
+  labelText: {
+    color: GlobalStyles.color.light_grey,
+    fontSize: 13,  // This fontSize can now be changed without affecting the container size
+    marginRight: 5, // Small gap between texts
   },
 });
 
