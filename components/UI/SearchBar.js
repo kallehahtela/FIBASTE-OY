@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Text, Dimensions } from 'react-native';
 
 import IconButton from './IconButton';
 import { GlobalStyles } from '../../constants/colors';
@@ -43,22 +43,25 @@ const SearchBar = ({ style }) => {
       </View>
       <View style={styles.labelContainer}>
         <Text style={styles.labelText}>Anytime -</Text>
-        <Text style={styles.labelText}>Any day -</Text>
+        <Text style={styles.labelText}>Any age -</Text>
         <Text style={styles.labelText}>Earn cash</Text>
       </View>
     </View>
   );
 };
 
+const screenWidth = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
   container: {
-    width: 320,  // Fixed width set to 280 units
+    width: screenWidth * 0.9 ,  // Width set to 100% of parent container's width
+    alignSelf: 'center', // Centers the searchBar horizontally
     alignItems: 'center',
     backgroundColor: GlobalStyles.color.white,
     borderRadius: 30,
     borderWidth: 0.2,
     borderColor: GlobalStyles.color.light_grey,
-    marginBottom: 15,
+    marginBottom: 10,
     elevation: 4,
     shadowColor: 'black',
     shadowOffset: { width: -1, height: 4 },
