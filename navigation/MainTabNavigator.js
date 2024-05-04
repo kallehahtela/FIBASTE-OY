@@ -1,11 +1,11 @@
 import React from 'react';
-import { useSafeAreaInsets, SafeAreaProvider } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons, FontAwesome6 } from '@expo/vector-icons';
+import { Ionicons, FontAwesome5 } from '@expo/vector-icons'; // Correct FontAwesome6 to FontAwesome5
 import { Platform } from 'react-native';
 
-import { GlobalStyles } from '../constants/colors';
-import SearchBar from '../components/UI/SearchBar';
+import { GlobalStyles } from '../constants/colors'; // Ensure your GlobalStyles accurately define these properties
+import SearchBar from '../components/UI/SearchBar'; // Assuming SearchBar is correctly implemented
 import ExploreScreen from '../screens/ExploreScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import TaskScreen from '../screens/TaskScreen';
@@ -38,7 +38,7 @@ function MainTabNavigator() {
           paddingTop: 5,
           borderRadius: 10,
         },
-        tabBarActiveTintColor: GlobalStyles.color.fibasteBlue,
+        tabBarActiveTintColor: GlobalStyles.color.fibasteBlue, // Ensure this color is defined in your GlobalStyles
         headerTitle: () => <SearchBar />
       }}
     >
@@ -49,7 +49,7 @@ function MainTabNavigator() {
         tabBarIcon: ({ color, size }) => <Ionicons name="heart-outline" size={24} color={color} />
       }} />
       <BottomTabs.Screen name="Tasks" component={TaskScreen} options={{
-        tabBarIcon: ({ color, size }) => <FontAwesome6 name="airbnb" size={24} color={color} />
+        tabBarIcon: ({ color, size }) => <FontAwesome5 name="tasks" size={24} color={color} /> // Changed to FontAwesome5 compatible icon
       }} />
       <BottomTabs.Screen name="Messages" component={MessageScreen} options={{
         tabBarIcon: ({ color, size }) => <Ionicons name="chatbox-outline" size={24} color={color} />

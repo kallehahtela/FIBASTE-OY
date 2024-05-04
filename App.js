@@ -7,12 +7,14 @@ import MainTabNavigator from "./navigation/MainTabNavigator";
 
 function App() {
   return (
-    <SafeAreaProvider>
-      <StatusBar style="dark" />
-      <NavigationContainer>
-        <MainTabNavigator />
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <> 
+      <SafeAreaProvider>
+        <StatusBar style="dark" />
+        <NavigationContainer>
+          <MainTabNavigator />
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </>
   );
 }
 
