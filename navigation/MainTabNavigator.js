@@ -22,8 +22,9 @@ function MainTabNavigator() {
       screenOptions={{
         headerStyle: {
           backgroundColor: GlobalStyles.color.white,
-          height: 130,
-          borderRadius: 10,
+          height: 140,
+          borderBottomColor: GlobalStyles.color.light_grey,
+          borderBottomWidth: .2,
         },
         headerTintColor: GlobalStyles.color.white,
         headerTitleContainerStyle: {
