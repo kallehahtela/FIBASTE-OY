@@ -42,8 +42,8 @@ const SearchBar = ({ style }) => {
         )}
       </View>
       <View style={styles.labelContainer}>
-        <Text style={styles.labelText}>Anytime -</Text>
-        <Text style={styles.labelText}>Any age -</Text>
+        <Text style={styles.labelText}>Find tasks -</Text>
+        <Text style={styles.labelText}>Look up people -</Text>
         <Text style={styles.labelText}>Earn cash</Text>
       </View>
     </View>

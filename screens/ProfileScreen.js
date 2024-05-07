@@ -1,16 +1,21 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { GlobalStyles } from "../constants/colors";
 
 function ProfileScreen() {
     // Placeholder data
     const userProfile = {
+        imageUrl: '../assets/kalle_hahtela.jpg', // Replace with actual image URL
         username: 'Kalle Hahtela',
-        title: 'CEO',
+        title: 'CEO of Fibaste',
         location: 'Tampere, Finland',
-        bio: '20-years old Full Stack Developer from Tampere, Finland. Dad of one 4 months old girl baby.',
-        imageUrl: 'https://via.placeholder.com/150', // Replace with actual image URL
+        isVerified: true, // Assuming verification status is part of the user profile
+        stats: {
+            ratio: 4.5,
+            completedTasks: 36,
+            activeTasks: 5,
+        },
     };
 
     // Function placeholders for button actions
@@ -24,21 +29,49 @@ function ProfileScreen() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.banner} />
-            <Image source={{ uri: userProfile.imageUrl }} style={styles.profileImage} />
-            <Text style={styles.username}>{userProfile.username}</Text>
+            <Image source={require('../assets/kalle.jpg')} style={styles.profileImage} />
+            <View style={styles.usernameContainer}>
+                <Text style={styles.username}>{userProfile.username}</Text>
+                {userProfile.isVerified && (
+                    <MaterialIcons 
+                        name="verified"
+                        size={20}
+                        color={GlobalStyles.color.fibasteBlue}
+                        style={{ marginLeft: 5 }}
+                    />
+                )}
+            </View>
             <Text style={styles.title}>{userProfile.title}</Text>
             <View style={styles.locationContainer}>
-                <Ionicons name="location-outline" size={20} color={GlobalStyles.color.dark_grey}/>
+                <Ionicons 
+                    name="location-outline" 
+                    size={20} 
+                    color={GlobalStyles.color.dark_grey} 
+                />
                 <Text style={styles.location}>{userProfile.location}</Text>
             </View>
-            <Text style={styles.bio}>{userProfile.bio}</Text>
+            <View style={styles.statsContainer}>
+                <View style={styles.statBox}>
+                    <Text style={styles.statNumber}>{userProfile.stats.ratio}</Text>
+                    <Text style={styles.statLabel}>Rating</Text>
+                </View>
+
+                <View style={styles.statBox}>
+                    <Text style={styles.statNumber}>{userProfile.stats.completedTasks}</Text>
+                    <Text style={styles.statLabel}>Completed</Text>
+                </View>
+
+                <View style={styles.statBox}>
+                    <Text style={styles.statNumber}>{userProfile.stats.activeTasks}</Text>
+                    <Text style={styles.statLabel}>Active</Text>
+                </View>
+            </View>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} onPress={handleEditProfile}>
                     <Text style={styles.buttonText}>Edit</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={handleAddTask}>
                     <Text style={styles.buttonText}>Add Task</Text>
                 </TouchableOpacity>
             </View>
@@ -51,35 +84,29 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        backgroundColor: '#fff',
+        backgroundColor: GlobalStyles.color.white,
         paddingTop: 20,
     },
-    banner: {
-        backgroundColor: '#4e9af1', // Assuming 'fibasteBlue' is this color
-        width: '100%',
-        height: 150,
-        borderBottomLeftRadius: 200,
-        borderBottomRightRadius: 200,
-        position: 'absolute',
-        top: 0,
-        overflow: 'hidden',
-    },
     profileImage: {
-        width: 120,
-        height: 120,
-        borderRadius: 60,
-        marginTop: 130,
+        width: 160,
+        height: 160,
+        borderRadius: 80,
+        marginTop: 10,
         borderWidth: 3,
-        borderColor: '#fff',
+        borderColor: GlobalStyles.color.white,
+    },
+    usernameContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 8,
     },
     username: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginTop: 8,
     },
     title: {
         fontSize: 16,
-        color: '#666',
+        color: GlobalStyles.color.dark_grey,
     },
     locationContainer: {
         flexDirection: 'row',
@@ -88,21 +115,26 @@ const styles = StyleSheet.create({
     },
     location: {
         fontSize: 14,
-        color: '#666',
+        color: GlobalStyles.color.dark_grey,
         marginLeft: 5,
-    },
-    bio: {
-        fontSize: 14,
-        color: '#666',
-        textAlign: 'center',
-        paddingHorizontal: 20,
-        marginTop: 4,
     },
     statsContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         width: '100%',
         marginTop: 10,
+    },
+    statBox: {
+        alignItems: 'center',
+    },
+    statNumber: {
+        fontSize: 26,
+        color: GlobalStyles.color.fibasteBlue,
+        fontWeight: 'bold',
+    },
+    statLabel: {
+        fontSize: 12,
+        color: GlobalStyles.color.dark_grey,
     },
     buttonContainer: {
         flexDirection: 'row',
@@ -111,18 +143,18 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     button: {
-        backgroundColor: '#4e9af1',
+        backgroundColor: GlobalStyles.color.fibasteBlue,
         paddingVertical: 8,
         paddingHorizontal: 20,
         borderRadius: 20,
-        shadowColor: 'black',
+        shadowColor: GlobalStyles.color.black,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 1.5,
         elevation: 4,
     },
     buttonText: {
-        color: 'white',
+        color: GlobalStyles.color.white,
         fontSize: 16,
         fontWeight: 'bold',
     },
