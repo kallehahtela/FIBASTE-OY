@@ -5,8 +5,6 @@ import { GlobalStyles } from "../constants/colors";
 
 import SwipeCard from '../components/UI/SwipeCard';
 
-const { width } = Dimensions.get('window');
-
 function ProfileScreen() {
     const userProfile = {
         imageUrl: '../assets/kalle.jpg',
@@ -96,12 +94,14 @@ const styles = StyleSheet.create({
     },
     statsContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'center', // This will center the container
+        alignItems: 'center', // This ensures vertical alignment
         width: '100%',
         marginTop: 10,
     },
     statBox: {
         alignItems: 'center',
+        marginHorizontal: 30, // This adds space between each stat box
     },
     statNumber: {
         fontSize: 26,

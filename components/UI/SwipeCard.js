@@ -28,13 +28,13 @@ function SwipeCard() {
     const [activeIndex, setActiveIndex] = useState(0);
 
     const handleScroll = event => {
-        const slide = Math.ceil(event.nativeEvent.contentOffset.x / event.nativeEvent.layoutMeasurement.width);
-        if ( slide !== activeIndex ) {
+        const position = event.nativeEvent.contentOffset.x;
+        const slide = Math.round(position / (width - 40));
+        if (slide !== activeIndex) {
             setActiveIndex(slide);
         }
     };
 
-    // Updated to use Ionicons for stars
     const renderStars = (rating) => {
         const stars = [];
         for (let i = 0; i < 5; i++) {
@@ -55,10 +55,11 @@ function SwipeCard() {
             <ScrollView 
                 horizontal
                 pagingEnabled
-                showsHorizontalScrollIndicator
+                showsHorizontalScrollIndicator={false}
                 onScroll={handleScroll}
                 scrollEventThrottle={16}
                 style={styles.reviewContainer}
+                contentContainerStyle={{ alignItems: 'center' }} // Ensure alignment is correct
             >
                 {userProfile.reviews.map(review => (
                     <View key={review.id} style={styles.reviewCard}>
@@ -80,7 +81,7 @@ function SwipeCard() {
                 ))}
             </ScrollView>
             <View style={styles.pagination}>
-                {userProfile.reviews.map(( item, index ) => (
+                {userProfile.reviews.map((item, index) => (
                     <Text key={index} style={[styles.dot, {opacity: index === activeIndex ? 1 : 0.3}]}>&bull;</Text>
                 ))}
             </View>
@@ -90,31 +91,33 @@ function SwipeCard() {
 
 const styles = StyleSheet.create({
     reviewContainer: {
-        height: 150,
+        height: 160,
         marginTop: 20,
+        paddingBottom: 0,
     },
     reviewCard: {
         width: width - 40,
         marginHorizontal: 20,
         backgroundColor: GlobalStyles.color.white,
         borderRadius: 10,
-        padding: 10,
+        padding: 20,
         alignItems: 'center',
         justifyContent: 'center',
         borderColor: GlobalStyles.color.light_grey,
         borderWidth: 1,
-        shadowColor: GlobalStyles.color.black,
-        shadowOffset: { width: 1, height: 3 },
-        shadowOpacity: 1,
-        shadowRadius: 1.5,
-        elevation: 4,
+        shadowColor: 'transparent',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0,
+        shadowRadius: 0,
+        elevation: 0,
+        overflow: 'hidden',
     },
     reviewText: {
         fontSize: 16,
         textAlign: 'center',
     },
     reviewRating: {
-        fontSize: 14,
+        flexDirection: 'row',
         marginTop: 5,
     },
     pagination: {
@@ -127,6 +130,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: GlobalStyles.color.dark_grey,
         marginHorizontal: 2,
+        paddingBottom: 0,
     },
     miniProfileImage: {
         width: 30,
@@ -139,16 +143,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'flex-start',
         marginBottom: 5,
-    },
-    reviewUsername: {
-        fontSize: 15,
-        marginBottom: 2,
-        fontWeight: 'bold',
-        marginRight: 2,  // Added space before the verified icon
-    },
-    reviewRating: {
-        flexDirection: 'row',
-        marginTop: 5,
     },
 });
 
