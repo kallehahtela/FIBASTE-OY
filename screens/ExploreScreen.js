@@ -1,4 +1,4 @@
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, StyleSheet } from 'react-native';
 import StatsCard from '../components/UI/StatsCard';
 
 import { GlobalStyles } from '../constants/colors';
@@ -7,6 +7,7 @@ function ExploreScreen() {
     return (
         <ScrollView style={styles.overallScrollContainer}>
             <View style={styles.container}>
+                <Text style={styles.headsUpTitle}>Impact Tracker</Text>
                 <StatsCard title='Stats' text='Here are some interesting statistics'/>
             </View>
         </ScrollView>
@@ -25,5 +26,10 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 20,
     },
-
+    headsUpTitle: {
+        textAlign: 'center',
+        fontSize: 16,
+        marginTop: 10,
+        color: GlobalStyles.color.dark_grey,
+    }
 });

@@ -64,7 +64,7 @@ function SwipeCard() {
                 {userProfile.reviews.map(review => (
                     <View key={review.id} style={styles.reviewCard}>
                         <View style={styles.reviewHeader}>
-                            <Image source={require('../../assets/kalle.jpg')} style={styles.miniProfileImage} />
+                            <Image source={require('../../assets/images/kalle.jpg')} style={styles.miniProfileImage} />
                             <Text style={styles.reviewUsername}>{userProfile.username}</Text>
                             {userProfile.isVerified && (
                                 <MaterialIcons 
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     dot: {
-        fontSize: 20,
+        fontSize: 30,
         color: GlobalStyles.color.dark_grey,
         marginHorizontal: 2,
         paddingBottom: 0,

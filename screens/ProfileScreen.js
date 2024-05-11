@@ -21,7 +21,7 @@ function ProfileScreen() {
 
     return (
         <ScrollView style={styles.scrollContainer} contentContainerStyle={{ alignItems: 'center' }}>
-            <Image source={require('../assets/kalle.jpg')} style={styles.profileImage} />
+            <Image source={require('../assets/images/kalle.jpg')} style={styles.profileImage} />
             <View style={styles.usernameContainer}>
                 <Text style={styles.username}>{userProfile.username}</Text>
                 {userProfile.isVerified && (

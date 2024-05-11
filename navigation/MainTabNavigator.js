@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons'; // Correct FontAwesome6 to FontAwesome5
 import { Platform } from 'react-native';
 
-import { GlobalStyles } from '../constants/colors'; // Ensure your GlobalStyles accurately define these properties
+import { GlobalStyles } from '../constants/colors';
 import SearchBar from '../components/UI/SearchBar'; // Assuming SearchBar is correctly implemented
 import ExploreScreen from '../screens/ExploreScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
